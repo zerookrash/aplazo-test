@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "test-aplazo": {
+      "hosting": {
+        "Aplazo-test": [
+          "test-aplazo"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "test-aplazo"
+  }
+}

@@ -1,0 +1,42 @@
+<div class="table-responsive">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Email</th>
+        <th scope="col">Fecha de creación</th>
+        <th class="d-none d-sm-block" scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="table-info" *ngFor="let item of fakeData">
+        <th scope="row">{{ item.name }} {{ item.lastname }}</th>
+        <td>{{ item.email }}</td>
+        <td>{{ item.createDate }}</td>
+        <td class="btn-group d-none d-sm-block" role="group">
+          <button
+            type="button"
+            class="btn btn-outline-warning m-1"
+            (click)="onGoToEdit(item)"
+          >
+            Editar
+          </button>
+          <button
+            type="button"
+            class="btn btn-outline-warning m-1"
+            (click)="onGoToDetails(item)"
+          >
+            Detalles
+          </button>
+          <button
+            type="button"
+            class="btn btn-outline-danger m-1"
+            (click)="onGoToDelete(item)"
+          >
+            Eliminar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

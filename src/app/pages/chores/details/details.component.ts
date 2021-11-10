@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { Notas } from 'src/app/shared/models/notas.interface';
+import { ChoresService } from '../chores.service';
 
 @Component({
   selector: 'app-details',
@@ -15,7 +16,7 @@ export class DetailsComponent implements OnInit {
   };
 
   nota: Notas;
-  constructor(private router: Router) {
+  constructor(private router: Router, private notasSvc: ChoresService) {
     const navigation = this.router.getCurrentNavigation();
     this.nota = navigation?.extras?.state?.value;
   }
@@ -31,8 +32,15 @@ export class DetailsComponent implements OnInit {
     this.router.navigate(['edit'], this.navigationExtras);
   }
 
-  onDelete(): void {
-    alert('Delete');
+  async onGoToDelete(nId: any): Promise<void> {
+    try {
+      await this.notasSvc.onDeleteNote(nId);
+      this.onGoToList();
+      // TODO: sweet alert
+      alert('Nota eliminada');
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   onGoToList(): void {

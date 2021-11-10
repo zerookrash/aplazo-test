@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Notas } from '../../models/notas.interface';
+import { ChoresService } from '../../../pages/chores/chores.service';
 
 @Component({
   selector: 'app-notas-form',
@@ -11,7 +12,11 @@ import { Notas } from '../../models/notas.interface';
 export class NotasFormComponent implements OnInit {
   nota: Notas;
   notasForm!: FormGroup;
-  constructor(private router: Router, private fb: FormBuilder) {
+  constructor(
+    private router: Router,
+    private fb: FormBuilder,
+    private notasSvc: ChoresService
+  ) {
     const navigation = this.router.getCurrentNavigation();
     this.nota = navigation?.extras?.state?.value;
     this.initForm();
@@ -27,6 +32,23 @@ export class NotasFormComponent implements OnInit {
 
   onSave(): void {
     console.log('Guardado', this.notasForm.value);
+    if (this.notasForm.valid) {
+      const nota = this.notasForm.value;
+      const notaId = this.nota?.id || null;
+      this.notasSvc.onSaveNote(nota, notaId);
+      this.router.navigate(['list']);
+      // TODO: Sweet Alert
+      this.notasForm.reset();
+    }
+  }
+
+  isValidField(field: string) {
+    const validateFild = this.notasForm.get(field);
+    return validateFild?.valid && validateFild?.touched
+      ? 'is-valid'
+      : validateFild?.touched
+      ? 'is-invalid'
+      : '';
   }
 
   private initForm(): void {

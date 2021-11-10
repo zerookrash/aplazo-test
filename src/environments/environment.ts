@@ -3,6 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+  production: false,
   firebase: {
     projectId: 'test-aplazo',
     appId: '1:40262668710:web:5cb675b032e75c698aff67',
@@ -12,17 +13,6 @@ export const environment = {
     apiKey: 'AIzaSyDc5RKUOymcNqbXOd7DrMJkDBk4iJRFO0Q',
     authDomain: 'test-aplazo.firebaseapp.com',
     messagingSenderId: '40262668710',
-    measurementId: 'G-EEC94LSD5Y',
-  },
-  production: false,
-  firebaseConfig: {
-    apiKey: 'AIzaSyDc5RKUOymcNqbXOd7DrMJkDBk4iJRFO0Q',
-    authDomain: 'test-aplazo.firebaseapp.com',
-    databaseURL: 'https://test-aplazo-default-rtdb.firebaseio.com',
-    projectId: 'test-aplazo',
-    storageBucket: 'test-aplazo.appspot.com',
-    messagingSenderId: '40262668710',
-    appId: '1:40262668710:web:5cb675b032e75c698aff67',
     measurementId: 'G-EEC94LSD5Y',
   },
 };

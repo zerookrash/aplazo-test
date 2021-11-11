@@ -8,7 +8,7 @@ const routes: Routes = [
       import('./pages/chores/new/new.module').then((m) => m.NewModule),
   },
   {
-    path: 'list',
+    path: '',
     loadChildren: () =>
       import('./pages/chores/list/list.module').then((m) => m.ListModule),
   },

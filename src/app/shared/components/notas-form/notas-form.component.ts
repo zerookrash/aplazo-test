@@ -34,12 +34,11 @@ export class NotasFormComponent implements OnInit {
   }
 
   onSave(): void {
-    console.log('Guardado', this.notasForm.value);
     if (this.notasForm.valid) {
       const nota = this.notasForm.value;
       const notaId = this.nota?.id || null;
       this.notasSvc.onSaveNote(nota, notaId);
-      this.router.navigate(['list']);
+      this.router.navigate(['/']);
       Swal.fire({
         position: 'top-end',
         icon: 'success',
@@ -85,6 +84,6 @@ export class NotasFormComponent implements OnInit {
   }
 
   onGoToList(): void {
-    this.router.navigate(['list']);
+    this.router.navigate(['/']);
   }
 }

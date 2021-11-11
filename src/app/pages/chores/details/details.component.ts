@@ -51,6 +51,6 @@ export class DetailsComponent implements OnInit {
   }
 
   onGoToList(): void {
-    this.router.navigate(['list']);
+    this.router.navigate(['/']);
   }
 }

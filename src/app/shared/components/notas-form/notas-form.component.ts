@@ -4,6 +4,9 @@ import { Router } from '@angular/router';
 import { Notas } from '../../models/notas.interface';
 import { ChoresService } from '../../../pages/chores/chores.service';
 
+import Swal from 'sweetalert2';
+import moment from 'moment';
+
 @Component({
   selector: 'app-notas-form',
   templateUrl: './notas-form.component.html',
@@ -37,8 +40,22 @@ export class NotasFormComponent implements OnInit {
       const notaId = this.nota?.id || null;
       this.notasSvc.onSaveNote(nota, notaId);
       this.router.navigate(['list']);
-      // TODO: Sweet Alert
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Tu nota ha sido guardada',
+        showConfirmButton: false,
+        timer: 2000,
+      });
       this.notasForm.reset();
+    } else {
+      Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: 'El formulario no es valido',
+        showConfirmButton: false,
+        timer: 2000,
+      });
     }
   }
 
@@ -62,7 +79,7 @@ export class NotasFormComponent implements OnInit {
           Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,3}$'),
         ],
       ],
-      createDate: [new Date()],
+      createDate: [moment().format('MMMM Do YYYY, h:mm:ss a')],
       note: ['', [Validators.required]],
     });
   }

@@ -3,6 +3,8 @@ import { Router, NavigationExtras } from '@angular/router';
 
 import { ChoresService } from '../chores.service';
 
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
@@ -32,8 +34,13 @@ export class ListComponent implements OnInit {
   async onGoToDelete(nId: any): Promise<void> {
     try {
       await this.notasSvc.onDeleteNote(nId);
-      // TODO: sweet alert
-      alert('Nota eliminada');
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Tu nota ha sido eliminada',
+        showConfirmButton: false,
+        timer: 2000,
+      });
     } catch (error) {
       console.log(error);
     }

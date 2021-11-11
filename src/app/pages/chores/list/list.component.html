@@ -4,7 +4,7 @@
       <tr>
         <th scope="col">Nombre</th>
         <th scope="col">Email</th>
-        <th scope="col">Fecha de creación</th>
+        <th scope="col">Creación</th>
         <th class="d-none d-sm-block" scope="col">Acciones</th>
       </tr>
     </thead>
@@ -12,7 +12,9 @@
       <tr class="table-info" *ngFor="let item of notas$ | async">
         <th scope="row">{{ item.name }} {{ item.lastname }}</th>
         <td>{{ item.email }}</td>
-        <td>{{ item.createDate }}</td>
+        <td>
+          <span>{{ item.createDate }}</span>
+        </td>
         <td class="btn-group d-none d-sm-block" role="group">
           <button
             type="button"

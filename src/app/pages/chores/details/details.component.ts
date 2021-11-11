@@ -3,6 +3,8 @@ import { NavigationExtras, Router } from '@angular/router';
 import { Notas } from 'src/app/shared/models/notas.interface';
 import { ChoresService } from '../chores.service';
 
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-details',
   templateUrl: './details.component.html',
@@ -36,8 +38,13 @@ export class DetailsComponent implements OnInit {
     try {
       await this.notasSvc.onDeleteNote(nId);
       this.onGoToList();
-      // TODO: sweet alert
-      alert('Nota eliminada');
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Tu nota ha sido eliminada',
+        showConfirmButton: false,
+        timer: 2000,
+      });
     } catch (error) {
       console.log(error);
     }

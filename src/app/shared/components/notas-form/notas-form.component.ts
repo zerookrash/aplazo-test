@@ -69,8 +69,13 @@ export class NotasFormComponent implements OnInit {
 
   private initForm(): void {
     this.notasForm = this.fb.group({
-      name: ['', [Validators.required]],
-      lastname: ['', [Validators.required]],
+      title: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern('^[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ ]+$'),
+        ],
+      ],
       email: [
         '',
         [
@@ -78,7 +83,7 @@ export class NotasFormComponent implements OnInit {
           Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,3}$'),
         ],
       ],
-      createDate: [moment().format('MMMM Do YYYY, h:mm:ss a')],
+      createDate: [moment().format('Do MMMM YYYY, h:mm:ss a')],
       note: ['', [Validators.required]],
     });
   }

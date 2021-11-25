@@ -1,7 +1,6 @@
 export interface Notas {
   id?: number;
-  name: string;
-  lastname: string;
+  title: string;
   email: string;
   createDate: string;
   note: string;

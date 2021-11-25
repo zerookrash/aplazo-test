@@ -2,7 +2,7 @@
   <table class="table table-hover">
     <thead>
       <tr>
-        <th scope="col">Nombre</th>
+        <th scope="col">Titulo</th>
         <th scope="col">Email</th>
         <th scope="col">Creación</th>
         <th class="d-none d-sm-block" scope="col">Acciones</th>
@@ -10,7 +10,9 @@
     </thead>
     <tbody>
       <tr class="table-info" *ngFor="let item of notas$ | async">
-        <th scope="row">{{ item.name }} {{ item.lastname }}</th>
+        <th scope="row">
+          {{ item.title | uppercase }}
+        </th>
         <td>{{ item.email }}</td>
         <td>
           <span>{{ item.createDate }}</span>
@@ -25,7 +27,7 @@
           </button>
           <button
             type="button"
-            class="btn btn-outline-warning m-1"
+            class="btn btn-outline-success m-1"
             (click)="onGoToDetails(item)"
           >
             Detalles

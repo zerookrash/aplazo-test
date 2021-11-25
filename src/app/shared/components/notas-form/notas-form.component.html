@@ -7,29 +7,15 @@
     <div class="form-group col-md-6">
       <input
         type="text"
-        placeholder="Name"
+        placeholder="Titulo"
         class="form-control"
-        formControlName="name"
-        [class]="isValidField('name')"
+        formControlName="title"
+        [class]="isValidField('title')"
       />
       <div class="invalid-feedback">
         <span> El campo es requerido. </span>
       </div>
     </div>
-    <div class="form-group col-md-6">
-      <input
-        type="text"
-        placeholder="Last Name"
-        class="form-control"
-        formControlName="lastname"
-        [class]="isValidField('lastname')"
-      />
-      <div class="invalid-feedback">
-        <span> El campo es requerido. </span>
-      </div>
-    </div>
-  </div>
-  <div class="row mt-3">
     <div class="form-group col-md-6">
       <input
         type="email"
